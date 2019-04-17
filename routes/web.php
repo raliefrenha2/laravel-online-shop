@@ -19,3 +19,11 @@ Route::get('/admin', function () {
     return view('admin.layouts');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
