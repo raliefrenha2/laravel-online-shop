@@ -16,7 +16,8 @@
 	@include('admin/parts/sidebar')
 
   <!-- Content Wrapper. Contains page content -->
-  	@include('admin.parts.content')
+  {{-- 	@include('admin.parts.content') --}}
+  @yield('content')
   <!-- /.content-wrapper -->
 
  	@include('admin/parts/footer')
