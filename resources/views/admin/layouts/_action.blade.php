@@ -1,0 +1,3 @@
+<a href="{{ $url_show }}" class="btn-show" title="Detail: {{ $model->category_name }}"><i class="fa fa-eye text-primary"></i></a> |
+<a href="{{ $url_edit }}" class="modal-show edit" title="Edit > {{ $model->category_name }}"><i class="fa fa-pencil text-inverse"></i></a> |
+<a href="{{ $url_destroy }}" class="btn-delete" title="Hapus > {{ $model->category_name }}"><i class="fa fa-trash-o text-danger" aria-hidden="true"></i></i></a> 

@@ -31,3 +31,16 @@ Route::prefix('customer')->group(function() {
 	Route::post('/login', 'Auth\CustomerLoginController@login')->name('customer.login.submit');
 	Route::get('/', 'CustomerController@index')->name('customer.dashboard');
 });
+
+
+// Route::resource('admin/category', 'Admin\CategoryController');
+
+Route::post('/admin/category/', 'Admin\CategoryController@store')->name('category.store');
+Route::get('/admin/category/', 'Admin\CategoryController@index')->name('category.index');
+Route::get('/admin/category/create', 'Admin\CategoryController@create')->name('category.create');
+Route::delete('/admin/category/{model}', 'Admin\CategoryController@destroy')->name('category.destroy');
+Route::put('/admin/category/{model}', 'Admin\CategoryController@update')->name('category.update');
+Route::get('/admin/category/{model}', 'Admin\CategoryController@show')->name('category.show');
+Route::get('/admin/category/{model}/edit', 'Admin\CategoryController@edit')->name('category.edit');
+
+Route::get('table/category', 'Admin\CategoryController@dataTable')->name('table.category');

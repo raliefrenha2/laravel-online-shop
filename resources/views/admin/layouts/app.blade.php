@@ -9,16 +9,13 @@
 	@include('admin/parts/nav')
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  
-
-   
+  <!-- Main Sidebar Container -->   
 	@include('admin/parts/sidebar')
-
   <!-- Content Wrapper. Contains page content -->
   {{-- 	@include('admin.parts.content') --}}
   @yield('content')
   <!-- /.content-wrapper -->
+  
 
  	@include('admin/parts/footer')
 </div>
@@ -36,5 +33,8 @@
 		<script src=" {{ asset('vendor/adminlte') }}/dist/js/adminlte.min.js"></script>
 		<!-- AdminLTE for demo purposes -->
 		{{-- <script src=" {{ asset('vendor/adminlte') }}/dist/js/demo.js"></script> --}}
+		 <!-- Custom script for laravel -->
+    	<script src="{{ asset('js/app.js') }}"></script>
+		@stack('scripts')
 	</body>
 </html>
