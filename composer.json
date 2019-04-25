@@ -17,6 +17,7 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8",
         "maatwebsite/excel": "^3.1",
+        "unisharp/laravel-ckeditor": "^4.7",
         "yajra/laravel-datatables-oracle": "^9.0"
     },
     "require-dev": {

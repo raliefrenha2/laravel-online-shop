@@ -29,7 +29,7 @@ $('#modal-btn-save').on('click', function (event) {
 
     form.find('.text-danger').remove();
     form.find('.form-group').removeClass('has-error');
-    form.find('input').removeClass('border border-danger');
+    form.find('input').removeClass('is-invalid');
 
     $.ajax({
         url: url,
@@ -56,7 +56,7 @@ $('#modal-btn-save').on('click', function (event) {
                         .addClass('has-error')
                         .append('<span class="text-danger"><strong>' + value + '</strong></span>')
                         .find('input')
-                        .addClass('border border-danger')
+                        .addClass('is-invalid')
                 });
             }
         }

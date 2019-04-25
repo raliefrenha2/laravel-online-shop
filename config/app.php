@@ -170,6 +170,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        // Unisharp\Ckeditor\ServiceProvider::class,
 
         /*
          * Application Service Providers...

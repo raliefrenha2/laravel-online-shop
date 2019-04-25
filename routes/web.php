@@ -43,4 +43,13 @@ Route::put('/admin/category/{model}', 'Admin\CategoryController@update')->name('
 Route::get('/admin/category/{model}', 'Admin\CategoryController@show')->name('category.show');
 Route::get('/admin/category/{model}/edit', 'Admin\CategoryController@edit')->name('category.edit');
 
+Route::post('/admin/product/', 'Admin\ProductController@store')->name('product.store');
+Route::get('/admin/product/', 'Admin\ProductController@index')->name('product.index');
+Route::get('/admin/product/create', 'Admin\ProductController@create')->name('product.create');
+Route::delete('/admin/product/{model}', 'Admin\ProductController@destroy')->name('product.destroy');
+Route::put('/admin/product/{model}', 'Admin\ProductController@update')->name('product.update');
+Route::get('/admin/product/{model}', 'Admin\ProductController@show')->name('product.show');
+Route::get('/admin/product/{model}/edit', 'Admin\ProductController@edit')->name('product.edit');
+
 Route::get('table/category', 'Admin\CategoryController@dataTable')->name('table.category');
+Route::get('table/product', 'Admin\ProductController@dataTable')->name('table.product');
