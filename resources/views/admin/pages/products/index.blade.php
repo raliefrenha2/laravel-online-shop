@@ -40,10 +40,12 @@
                 <thead>
                 <tr>
                   <th>No</th>
+                  <th>Gambar</th>
                   <th>Nama Produk</th>
-                  <th>Slug Produk</th>
-                  <th>Urutan</th>
-                  <th></th>
+                  <th>Harga</th>
+                  <th>Stok</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -52,10 +54,12 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
+                  <th>Gambar</th>
                   <th>Nama Produk</th>
-                  <th>Slug Produk</th>
-                  <th>Urutan</th>
-                  <th></th>
+                  <th>Harga</th>
+                  <th>Stok</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
                 </tr>
                 </tfoot>
               </table>
@@ -96,9 +100,14 @@
             ajax: "{{ route('table.product') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'id'},
+                {data: 'image', name: 'image', 
+                render: function( data, type, row, meta){
+                  return '<img src="{{asset('uploads/product/')}}/'+data+'" alt="" width="60">'
+                }},
                 {data: 'product_name', name: 'product_name'},
-                {data: 'product_slug', name: 'product_slug'},
-                {data: 'sort', name: 'sort'},
+                {data: 'price', name: 'price', render: $.fn.dataTable.render.number( '.', '.', 0, 'Rp ' )},
+                {data: 'stock', name: 'stock', render: $.fn.dataTable.render.number( '.', '.', 0, '' )},
+                {data: 'product_status', name: 'product_status'},
                 {data: 'action', name: 'action'}
             ]
         });

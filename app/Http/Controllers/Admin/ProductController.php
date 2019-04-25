@@ -59,7 +59,7 @@ class ProductController extends Controller
             
         }
         
-        Product::firstOrCreate($request->except('_token'),['user_id' => 1, 'image' => $image]);
+        Product::firstOrCreate($request->except('_token','image'),['user_id' => 1, 'image' => $image]);
         return redirect(route('product.index'));
     }
 
