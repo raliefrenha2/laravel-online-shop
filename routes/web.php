@@ -53,3 +53,7 @@ Route::get('/admin/product/{model}/edit', 'Admin\ProductController@edit')->name(
 
 Route::get('table/category', 'Admin\CategoryController@dataTable')->name('table.category');
 Route::get('table/product', 'Admin\ProductController@dataTable')->name('table.product');
+
+
+Route::post('admin/users/search', 'Admin\UserController@search')->name('users.search');
+Route::resource('admin/users', 'Admin\UserController');
