@@ -7,8 +7,8 @@ use App\Http\Requests\ProductRequest;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Contracts\DataTable;
 use Yajra\DataTables\DataTables;
-use Intervention\Image\ImageManagerStatic as Image;
-use File;
+use App\Http\Controllers\Traits\FileUploadTrait;
+
 
 
 use App\Product;
@@ -16,6 +16,7 @@ use App\Category;
 
 class ProductController extends Controller
 {
+    use FileUploadTrait;
    /**
      * Display a listing of the resource.
      *
@@ -50,16 +51,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ProductRequest $request)
-    {
-        //Default $image = null
-        $image = null;
-        //Jika terdapat file (Foto / Gambar ) yang dikirim
-        if ($request->hasFile('image')) {
-            // Jalankan Method saveFIle()
-            $image = $this->saveFile($request->product_name, $request->file('image'));  
-        }
-        
-        Product::firstOrCreate($request->except('_token','image'),['user_id' => 1, 'image' => $image]);
+    {    
+        $request = $this->saveFiles($request);
+        $request['user_id'] = 1;
+
+        Product::create($request->all());
         return redirect(route('product.index'));
     }
 
@@ -132,23 +128,4 @@ class ProductController extends Controller
             ->make('true');
     }
 
-    private function saveFile($name, $photo)
-    {
-        //set nama file adalah gabungan antara nama produk dan time(). Ekstensi gambar tetap dipertahankan
-        $images = str_slug($name) . time() . '.' . $photo->getClientOriginalExtension();
-        //set path untuk menyimpan gambar
-        $path = public_path('uploads/product');
-
-        //cek jika uploads/product bukan direktori / folder
-
-        if (!File::isDirectory($path)) {
-            //maka folder tersebut dibuat
-            File::makeDirectory($path, 0777, true, true);
-        }
-
-        //simpan gambar yang diuplaod ke folrder uploads/produk
-        Image::make($photo)->save($path . '/' . $images);
-        //mengembalikan nama file yang ditampung divariable $images
-        return $images;
-    }
 }

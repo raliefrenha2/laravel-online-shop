@@ -119,6 +119,9 @@
               {!! Form::label('image', 'Gambar : ', array('class' => 'col-md-3 col-form-label')) !!}
               <div class="col-md-8">
                 {!!Form::file('image', null, ['class' => 'form-control', 'id' => 'image']) !!}
+                {!! Form::hidden('image_max_size', 5) !!}
+                {!! Form::hidden('image_max_width', 2048) !!}
+                {!! Form::hidden('image_max_height', 2048) !!}
                 {!! $errors->has('image') ? '<div class="invalid-feedback">'.$errors->first('image').'</div>':'' !!}
               </div>
             </div>
