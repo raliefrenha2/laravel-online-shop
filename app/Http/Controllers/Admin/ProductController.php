@@ -55,8 +55,7 @@ class ProductController extends Controller
         //Jika terdapat file (Foto / Gambar ) yang dikirim
         if ($request->hasFile('image')) {
             // Jalankan Method saveFIle()
-            $image = $this->saveFile($request->product_name, $request->file('image'));
-            
+            $image = $this->saveFile($request->product_name, $request->file('image'));  
         }
         
         Product::firstOrCreate($request->except('_token','image'),['user_id' => 1, 'image' => $image]);
@@ -82,7 +81,13 @@ class ProductController extends Controller
      */
     public function edit(Product $model)
     {
-        return view('admin.pages.products.form', compact('model'));
+        $categories = Category::pluck('category_name', 'id');
+        $status = collect([
+            ['step' => 'Publish', 'name' => 'Publikasikan'],
+            ['step' => 'Draft', 'name' => 'Simpan sebagai Draft']
+        ])
+            ->pluck('name', 'step');
+        return view('admin.pages.products.create', compact('model','categories', 'status'));
     }
 
     /**

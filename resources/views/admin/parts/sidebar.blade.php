@@ -44,17 +44,23 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-envelope-o"></i>
+              <i class="fa fa-cubes nav-icon"></i>
               <p>
-                Mailbox
+                Produk
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../mailbox/mailbox.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Inbox</p>
+                <a href="{{ route('product.index')}}" class="nav-link">
+                  <i class="fa fa-dropbox nav-icon"></i>
+                  <p>Produk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('category.index')}}" class="nav-link">
+                  <i class="fa fa-th-list nav-icon"></i>
+                  <p>Kategori</p>
                 </a>
               </li>
             </ul>

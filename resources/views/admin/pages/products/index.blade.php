@@ -77,8 +77,6 @@
   </div>
 @endsection
 
-@include('admin.layouts._modal')
-
 @push('styles')
   <!-- DataTables -->
   <link rel="stylesheet" href=" {{ asset('vendor/adminlte') }}/plugins/datatables/dataTables.bootstrap4.min.css">
@@ -111,6 +109,11 @@
                 {data: 'action', name: 'action'}
             ]
         });
+
+        $( window ).on('load', function() {
+            $('table').find('a').removeClass('modal-show');
+        });
+        
     </script>
 @endpush
 

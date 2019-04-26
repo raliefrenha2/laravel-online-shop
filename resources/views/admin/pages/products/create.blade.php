@@ -33,9 +33,12 @@
           </div>
         </div>
         <div class="card-body">
-     {{--    {!! Form::model($model, [
+       {{--  {!! Form::model($model, [
             'route' => $model->exists ? ['category.update', $model->id] : 'category.store', 
-            'method' => $model->exists ? 'PUT' : 'POST'
+            'method' => $model->exists ? 'PUT' : 'POST',
+            'enctype' => 'multipart/form-data',
+            'class' => 'form-horizontal'
+
         ])!!} --}}
 
             {!! Form::open(array('route' => array('product.store'), 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal')) !!}
