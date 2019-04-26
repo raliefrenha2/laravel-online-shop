@@ -10,6 +10,7 @@ use Yajra\DataTables\DataTables;
 use Intervention\Image\ImageManagerStatic as Image;
 use File;
 
+
 use App\Product;
 use App\Category;
 
@@ -33,12 +34,12 @@ class ProductController extends Controller
     public function create()
     {
         // $model = new Product();
-        $categories = Category::pluck('category_name', 'id');
+        $categories = Category::pluck('category_name', 'id')->prepend('Pilih Kategori');
         $status = collect([
             ['step' => 'Publish', 'name' => 'Publikasikan'],
             ['step' => 'Draft', 'name' => 'Simpan sebagai Draft']
         ])
-            ->pluck('name', 'step');
+            ->pluck('name', 'step')->prepend('Pilih Status');
         return view('admin.pages.products.create', compact('categories', 'status'));
     }
 

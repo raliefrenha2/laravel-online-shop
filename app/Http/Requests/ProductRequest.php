@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class ProductRequest extends FormRequest
 {
     /**
@@ -24,7 +25,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
          $rules = [
-            'category_id' => 'required|integer',
+            'category_id' => 'not_in:0',
             'product_name' => 'required|string|min:3',
             'description' => 'required|min:10',
             'keywords' => 'required|string',
@@ -33,7 +34,7 @@ class ProductRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpg,png,jpeg',
             'weight' => 'required|numeric',
             'size' => 'required|string',
-            'product_status' => 'required',
+            'product_status' => 'not_in:0',
         ];
 
         if (request()->isMethod('put')) {

@@ -62,7 +62,8 @@
             <div class="form-group row">
               {!! Form::label('category_id', 'Kategori : ', array('class' => 'col-md-3 col-form-label')) !!}
               <div class="col-md-8">
-                {!! Form::select('category_id', $categories, NULL, array('class' => 'form-control select2'))!!}
+                {!! Form::select('category_id', $categories, NULL, array('class' => 'form-control select2'. ( $errors->has('category_id') ? ' is-invalid' : '' )))!!}
+                {!! $errors->has('category_id') ? '<div class="invalid-feedback">'.$errors->first('category_id').'</div>':'' !!}
               </div>
             </div>
 
