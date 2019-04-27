@@ -15,7 +15,7 @@ trait FileUploadTrait
      public function saveFiles(Request $request)
     {
 
-        $uploadPath = public_path(env('UPLOAD_PATH').'/uploads/product'));
+        $uploadPath = public_path(env('UPLOAD_PATH').'/uploads/product');
         $thumbPath = public_path(env('UPLOAD_PATH').'/uploads/thumb');
         if (! file_exists($uploadPath)) {
             mkdir($uploadPath, 0775);
@@ -28,7 +28,7 @@ trait FileUploadTrait
             if ($request->hasFile($key)) {
                 if ($request->has($key . '_max_width') && $request->has($key . '_max_height')) {
                     // Check file width
-                    $filename = $request->file($key)->getClientOriginalName() . '-' . time();
+                    $filename = str_slug($request->product_name) . '-' . time() .'.jpg';
                     $file     = $request->file($key);
                     $image    = Image::make($file);
                     if (! file_exists($thumbPath)) {
@@ -63,7 +63,7 @@ trait FileUploadTrait
                     $image->save($uploadPath . '/' . $filename);
                     $finalRequest = new Request(array_merge($finalRequest->all(), [$key => $filename]));
                 } else {
-                    $filename = $request->file($key)->getClientOriginalName() . '-' . time();
+                    $filename = str_slug($request->product_name) . '-' . time() .'.jpg';
                     $request->file($key)->move($uploadPath, $filename);
                     $finalRequest = new Request(array_merge($finalRequest->all(), [$key => $filename]));
                 }

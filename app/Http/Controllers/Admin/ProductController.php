@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Yajra\DataTables\Contracts\DataTable;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Traits\FileUploadTrait;
+use Illuminate\Support\Collection;
 
 
 
@@ -113,19 +114,23 @@ class ProductController extends Controller
 
     public function dataTable()
     {
-        $model = Product::query();
+        $model = Product::with('category');
+
         return DataTables::of($model)
-            ->addColumn('action', function ($model) {
-                return view('admin.layouts._action', [
-                    'model' => $model,
-                    'url_show' => route('product.show', $model->id),
-                    'url_edit' => route('product.edit', $model->id),
-                    'url_destroy' => route('product.destroy', $model->id),
-                ]);
-            })
-            ->addIndexColumn()
-            ->rawColumns(['action'])
-            ->make('true');
+        ->addColumn('category', function (Product $product) {
+            return $product->category->category_name; 
+        })
+        ->addColumn('action', function ($model) {
+            return view('admin.layouts._action', [
+                'model' => $model,
+                'url_show' => route('product.show', $model->id),
+                'url_edit' => route('product.edit', $model->id),
+                'url_destroy' => route('product.destroy', $model->id),
+            ]);
+        })
+         ->addIndexColumn()
+        ->rawColumns(['action'])
+        ->make('true');
     }
 
 }

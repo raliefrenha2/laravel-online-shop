@@ -42,6 +42,7 @@
                   <th>No</th>
                   <th>Gambar</th>
                   <th>Nama Produk</th>
+                  <th>Kategori</th>
                   <th>Harga</th>
                   <th>Stok</th>
                   <th>Status</th>
@@ -56,6 +57,7 @@
                   <th>No</th>
                   <th>Gambar</th>
                   <th>Nama Produk</th>
+                  <th>Kategori</th>
                   <th>Harga</th>
                   <th>Stok</th>
                   <th>Status</th>
@@ -103,6 +105,7 @@
                   return '<img src="{{asset('uploads/product/')}}/'+data+'" alt="" width="60">'
                 }},
                 {data: 'product_name', name: 'product_name'},
+                {data: 'category', name: 'category'},
                 {data: 'price', name: 'price', render: $.fn.dataTable.render.number( '.', '.', 0, 'Rp ' )},
                 {data: 'stock', name: 'stock', render: $.fn.dataTable.render.number( '.', '.', 0, '' )},
                 {data: 'product_status', name: 'product_status'},
