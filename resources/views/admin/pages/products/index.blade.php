@@ -34,7 +34,7 @@
         </div>
         <div class="card-body">
           <a href="{{ route('product.create') }}" class="btn btn-primary ml-2" title="Tambah Produk Baru"><i class="fa fa-plus"></i> Tambah</a>
-          <a href="{{ route('product.create') }}" class="btn btn-success ml-2 modal-show" title="Export to Excel File"><i class="fa fa-file-excel-o"></i> Export</a>
+          <a href="{{ route('product.export') }}" class="btn btn-success ml-2" title="Export to Excel File"><i class="fa fa-file-excel-o"></i> Export</a>
           
           <table id="datatable" class="table table-bordered table-striped">
                 <thead>

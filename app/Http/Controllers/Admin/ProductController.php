@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Exports\ProductsExport;
 use App\Http\Requests\ProductRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\FileUploadTrait;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Contracts\DataTable;
 use Yajra\DataTables\DataTables;
-use App\Http\Controllers\Traits\FileUploadTrait;
-use Illuminate\Support\Collection;
 
 
 
@@ -131,6 +132,11 @@ class ProductController extends Controller
          ->addIndexColumn()
         ->rawColumns(['action'])
         ->make('true');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new ProductsExport, 'products.xlsx');
     }
 
 }
