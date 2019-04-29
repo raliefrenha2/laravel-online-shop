@@ -33,15 +33,15 @@
           </div>
         </div>
         <div class="card-body">
-       {{--  {!! Form::model($model, [
-            'route' => $model->exists ? ['category.update', $model->id] : 'category.store', 
+        {!! Form::model($model, [
+            'route' => $model->exists ? ['product.update', $model->id] : 'product.store', 
             'method' => $model->exists ? 'PUT' : 'POST',
             'enctype' => 'multipart/form-data',
             'class' => 'form-horizontal'
 
-        ])!!} --}}
+        ])!!}
 
-            {!! Form::open(array('route' => array('product.store'), 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal')) !!}
+            {{-- {!! Form::open(array('route' => array('product.store'), 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal')) !!} --}}
 
             <div class="form-group row">
               {!! Form::label('product_name', 'Nama Produk : ', array('class' => 'col-md-3 col-form-label-lg')) !!}
@@ -54,7 +54,7 @@
             <div class="form-group row">
               {!! Form::label('product_code', 'Kode Produk : ', array('class' => 'col-md-3 col-form-label')) !!}
               <div class="col-md-8">
-                {!!Form::text('product_code', null, ['class' => 'form-control'. ( $errors->has('product_code') ? ' is-invalid' : '' ), 'id' => 'product_code']) !!}
+                {!!Form::text('product_code', null, ['class' => 'form-control'. ( $errors->has('product_code') ? ' is-invalid' : '' ), 'id' => 'product_code', 'disabled' => $model->exists ? true :false]) !!}
                 {!! $errors->has('product_code') ? '<div class="invalid-feedback">'.$errors->first('product_code').'</div>':'' !!}
               </div>
             </div>

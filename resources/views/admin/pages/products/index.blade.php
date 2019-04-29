@@ -102,19 +102,18 @@
                 {data: 'DT_RowIndex', name: 'id'},
                 {data: 'image', name: 'image', 
                 render: function( data, type, row, meta){
-                  return '<img src="{{asset('uploads/product/')}}/'+data+'" alt="" width="60">'
+                  return '<img src="{{asset('uploads/product/')}}/'+data+'" alt="'+data+'" width="60">'
                 }},
                 {data: 'product_name', name: 'product_name'},
-                {data: 'category', name: 'category'},
+                {data: 'category', name: 'category',
+                render: function(data, type, row, meta){
+                  return '<span class="badge badge-primary">'+data+'</span>'
+                }},
                 {data: 'price', name: 'price', render: $.fn.dataTable.render.number( '.', '.', 0, 'Rp ' )},
                 {data: 'stock', name: 'stock', render: $.fn.dataTable.render.number( '.', '.', 0, '' )},
                 {data: 'product_status', name: 'product_status'},
                 {data: 'action', name: 'action'}
             ]
-        });
-
-        $( window ).on('load', function() {
-            $('table').find('a').removeClass('modal-show');
         });
         
     </script>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Traits\FileUploadTrait;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Contracts\DataTable;
 use Yajra\DataTables\DataTables;
+use File;
 
 
 
@@ -36,14 +37,14 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // $model = new Product();
+        $model = new Product();
         $categories = Category::pluck('category_name', 'id')->prepend('Pilih Kategori');
         $status = collect([
             ['step' => 'Publish', 'name' => 'Publikasikan'],
             ['step' => 'Draft', 'name' => 'Simpan sebagai Draft']
         ])
             ->pluck('name', 'step')->prepend('Pilih Status');
-        return view('admin.pages.products.create', compact('categories', 'status'));
+        return view('admin.pages.products.form', compact('model','categories', 'status'));
     }
 
     /**
@@ -86,7 +87,7 @@ class ProductController extends Controller
             ['step' => 'Draft', 'name' => 'Simpan sebagai Draft']
         ])
             ->pluck('name', 'step');
-        return view('admin.pages.products.create', compact('model','categories', 'status'));
+        return view('admin.pages.products.form', compact('model','categories', 'status'));
     }
 
     /**
@@ -98,7 +99,14 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $model)
     {
+        if ($request->hasFile('image')){
+            !empty($model->image) ? File::delete(public_path('uploads/product/' . $model->image)) : null;
+            !empty($model->image) ? File::delete(public_path('uploads/thumb/' . $model->image)) : null;
+            $request = $this->saveFiles($request);
+        }
+        
         $model->update($request->all());
+        return view('admin.pages.products.index')->with(['success' => '<strong>' . $model->name . '</strong> Diperbaharui']);
     }
 
     /**
@@ -109,6 +117,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $model)
     {
+        if(!empty($model->image)) {
+            File::delete(public_path('uploads/product/' . $model->image));
+            File::delete(public_path('uploads/thumb/' . $model->image));
+        }
+
         $model->delete();
     }
 
@@ -122,7 +135,7 @@ class ProductController extends Controller
             return $product->category->category_name; 
         })
         ->addColumn('action', function ($model) {
-            return view('admin.layouts._action', [
+            return view('admin.layouts._action_nm', [
                 'model' => $model,
                 'url_show' => route('product.show', $model->id),
                 'url_edit' => route('product.edit', $model->id),
