@@ -43,6 +43,14 @@ Route::put('/admin/category/{model}', 'Admin\CategoryController@update')->name('
 Route::get('/admin/category/{model}', 'Admin\CategoryController@show')->name('category.show');
 Route::get('/admin/category/{model}/edit', 'Admin\CategoryController@edit')->name('category.edit');
 
+Route::post('/admin/tag/', 'Admin\TagController@store')->name('tag.store');
+Route::get('/admin/tag/', 'Admin\TagController@index')->name('tag.index');
+Route::get('/admin/tag/create', 'Admin\TagController@create')->name('tag.create');
+Route::delete('/admin/tag/{model}', 'Admin\TagController@destroy')->name('tag.destroy');
+Route::put('/admin/tag/{model}', 'Admin\TagController@update')->name('tag.update');
+Route::get('/admin/tag/{model}', 'Admin\TagController@show')->name('tag.show');
+Route::get('/admin/tag/{model}/edit', 'Admin\TagController@edit')->name('tag.edit');
+
 Route::post('/admin/product/', 'Admin\ProductController@store')->name('product.store');
 Route::get('/admin/product/', 'Admin\ProductController@index')->name('product.index');
 Route::get('/admin/product/create', 'Admin\ProductController@create')->name('product.create');
@@ -52,6 +60,7 @@ Route::get('/admin/product/{model}', 'Admin\ProductController@show')->name('prod
 Route::get('/admin/product/{model}/edit', 'Admin\ProductController@edit')->name('product.edit');
 
 Route::get('table/category', 'Admin\CategoryController@dataTable')->name('table.category');
+Route::get('table/tag', 'Admin\TagController@dataTable')->name('table.tag');
 Route::get('table/product', 'Admin\ProductController@dataTable')->name('table.product');
 
 Route::get('export/product', 'Admin\ProductController@export')->name('product.export');

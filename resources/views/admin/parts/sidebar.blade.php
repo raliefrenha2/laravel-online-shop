@@ -63,6 +63,12 @@
                   <p>Kategori</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('tag.index')}}" class="nav-link">
+                  <i class="fa fa-tags nav-icon"></i>
+                  <p>Tag</p>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>
