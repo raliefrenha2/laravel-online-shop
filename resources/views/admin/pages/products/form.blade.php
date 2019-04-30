@@ -44,18 +44,18 @@
             {{-- {!! Form::open(array('route' => array('product.store'), 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal')) !!} --}}
 
             <div class="form-group row">
-              {!! Form::label('product_name', 'Nama Produk : ', array('class' => 'col-md-3 col-form-label-lg')) !!}
+              {!! Form::label('name', 'Nama Produk : ', array('class' => 'col-md-3 col-form-label-lg')) !!}
                 <div class="col-md-8">
-                   {!!Form::text('product_name', null, ['class' => 'form-control form-control-lg'. ( $errors->has('product_name') ? ' is-invalid' : '' ), 'id' => 'product_name']) !!}
-                   {!! $errors->has('product_name') ? '<div class="invalid-feedback">'.$errors->first('product_name').'</div>':'' !!}
+                   {!!Form::text('name', null, ['class' => 'form-control form-control-lg'. ( $errors->has('name') ? ' is-invalid' : '' ), 'id' => 'name']) !!}
+                   {!! $errors->has('name') ? '<div class="invalid-feedback">'.$errors->first('name').'</div>':'' !!}
                 </div>
             </div>
 
             <div class="form-group row">
-              {!! Form::label('product_code', 'Kode Produk : ', array('class' => 'col-md-3 col-form-label')) !!}
+              {!! Form::label('code', 'Kode Produk : ', array('class' => 'col-md-3 col-form-label')) !!}
               <div class="col-md-8">
-                {!!Form::text('product_code', null, ['class' => 'form-control'. ( $errors->has('product_code') ? ' is-invalid' : '' ), 'id' => 'product_code']) !!}
-                {!! $errors->has('product_code') ? '<div class="invalid-feedback">'.$errors->first('product_code').'</div>':'' !!}
+                {!!Form::text('code', null, ['class' => 'form-control'. ( $errors->has('code') ? ' is-invalid' : '' ), 'id' => 'code']) !!}
+                {!! $errors->has('code') ? '<div class="invalid-feedback">'.$errors->first('code').'</div>':'' !!}
               </div>
             </div>
 
@@ -127,10 +127,10 @@
             </div>
 
             <div class="form-group row">
-              {!! Form::label('product_status', 'Status : ', array('class' => 'col-md-3 col-form-label')) !!}
+              {!! Form::label('status', 'Status : ', array('class' => 'col-md-3 col-form-label')) !!}
               <div class="col-md-8">
-                {!! Form::select('product_status', $status, NULL, array('class' => 'form-control select2'. ( $errors->has('product_status') ? ' is-invalid' : '' )))!!}
-                {!! $errors->has('product_status') ? '<div class="invalid-feedback">'.$errors->first('product_status').'</div>':'' !!}
+                {!! Form::select('status', $status, NULL, array('class' => 'form-control select2'. ( $errors->has('status') ? ' is-invalid' : '' )))!!}
+                {!! $errors->has('status') ? '<div class="invalid-feedback">'.$errors->first('status').'</div>':'' !!}
               </div>
             </div>
 

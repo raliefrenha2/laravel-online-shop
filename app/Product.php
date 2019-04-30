@@ -15,7 +15,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id','product_name','category_id','description','keywords', 'price','stock', 'product_slug','image', 'weight', 'size', 'product_status', 'product_code'
+        'user_id','name','category_id','description','keywords', 'price','stock', 'slug','image', 'weight', 'size', 'status', 'code'
     ];
 
     /**
@@ -26,8 +26,8 @@ class Product extends Model
    public function sluggable()
    {
       return [
-            'product_slug' => [
-                'source' => 'product_name'
+            'slug' => [
+                'source' => 'name'
             ]
         ];
    }

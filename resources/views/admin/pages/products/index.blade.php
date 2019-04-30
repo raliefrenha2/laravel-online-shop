@@ -104,14 +104,14 @@
                 render: function( data, type, row, meta){
                   return '<img src="{{asset('uploads/product/')}}/'+data+'" alt="'+data+'" width="60">'
                 }},
-                {data: 'product_name', name: 'product_name'},
+                {data: 'name', name: 'name'},
                 {data: 'category', name: 'category',
                 render: function(data, type, row, meta){
                   return '<span class="badge badge-primary">'+data+'</span>'
                 }},
                 {data: 'price', name: 'price', render: $.fn.dataTable.render.number( '.', '.', 0, 'Rp ' )},
                 {data: 'stock', name: 'stock', render: $.fn.dataTable.render.number( '.', '.', 0, '' )},
-                {data: 'product_status', name: 'product_status'},
+                {data: 'status', name: 'status'},
                 {data: 'action', name: 'action'}
             ]
         });
