@@ -38,7 +38,7 @@ class ProductController extends Controller
     public function create()
     {
         $model = new Product();
-        $categories = Category::pluck('category_name', 'id')->prepend('Pilih Kategori');
+        $categories = Category::pluck('name', 'id')->prepend('Pilih Kategori');
         $status = collect([
             ['step' => 'Publish', 'name' => 'Publikasikan'],
             ['step' => 'Draft', 'name' => 'Simpan sebagai Draft']
@@ -81,7 +81,7 @@ class ProductController extends Controller
      */
     public function edit(Product $model)
     {
-        $categories = Category::pluck('category_name', 'id');
+        $categories = Category::pluck('name', 'id');
         $status = collect([
             ['step' => 'Publish', 'name' => 'Publikasikan'],
             ['step' => 'Draft', 'name' => 'Simpan sebagai Draft']
@@ -132,7 +132,7 @@ class ProductController extends Controller
 
         return DataTables::of($model)
         ->addColumn('category', function (Product $product) {
-            return $product->category->category_name; 
+            return $product->category->name; 
         })
         ->addColumn('action', function ($model) {
             return view('admin.layouts._action_nm', [
