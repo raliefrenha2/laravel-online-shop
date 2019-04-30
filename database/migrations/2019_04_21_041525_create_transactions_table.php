@@ -17,12 +17,12 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->length(11)->unsigned();
             $table->integer('customer_id')->length(11)->unsigned();
-            $table->string('transaction_code')->length(255);
+            $table->string('code')->length(255);
             $table->integer('product_id')->length(11)->unsigned();
             $table->integer('price')->length(11);
             $table->integer('quantity')->length(11);
             $table->integer('total_price')->length(11);
-            $table->datetime('transaction_date');
+            $table->datetime('date');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')

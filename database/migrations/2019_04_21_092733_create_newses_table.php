@@ -16,11 +16,11 @@ class CreateNewsesTable extends Migration
         Schema::create('newses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('news_type')->length(100);
-            $table->string('news_title')->length(100);
-            $table->string('news_slug')->length(100);
+            $table->string('type')->length(100);
+            $table->string('title')->length(100);
+            $table->string('slug')->length(100);
             $table->text('keywords')->length(100);
-            $table->string('news_status')->length(20);
+            $table->string('status')->length(20);
             $table->text('description')->length(100);
             $table->string('image')->length(20);
             $table->timestamps();

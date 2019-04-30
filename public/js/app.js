@@ -30,7 +30,6 @@ $('#modal-btn-save').on('click', function (event) {
     form.find('.text-danger').remove();
     form.find('.form-group').removeClass('has-error');
     form.find('input').removeClass('is-invalid');
-
     $.ajax({
         url: url,
         method: method,

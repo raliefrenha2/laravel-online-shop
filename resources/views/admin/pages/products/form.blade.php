@@ -25,7 +25,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Tambah Produk</h3>
+          <h3 class="card-title">{!! $model->exists ? 'Edit Produk' : 'Tambah Produk' !!}</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -54,7 +54,7 @@
             <div class="form-group row">
               {!! Form::label('product_code', 'Kode Produk : ', array('class' => 'col-md-3 col-form-label')) !!}
               <div class="col-md-8">
-                {!!Form::text('product_code', null, ['class' => 'form-control'. ( $errors->has('product_code') ? ' is-invalid' : '' ), 'id' => 'product_code', 'disabled' => $model->exists ? true :false]) !!}
+                {!!Form::text('product_code', null, ['class' => 'form-control'. ( $errors->has('product_code') ? ' is-invalid' : '' ), 'id' => 'product_code']) !!}
                 {!! $errors->has('product_code') ? '<div class="invalid-feedback">'.$errors->first('product_code').'</div>':'' !!}
               </div>
             </div>
@@ -138,7 +138,7 @@
               {!! Form::label('button', '', array('class' => 'col-md-3 col-form-label')) !!}
               <div class="col-md-8">
                 
-                {!! Form::button('Simpan', array('class' => 'btn btn-success btn-lg mr-2', 'type' => 'submit')); !!}
+                {!! Form::button($model->exists ? 'Ubah':'Simpan', array('class' => 'btn btn-success btn-lg mr-2', 'type' => 'submit')); !!}
                 {!! Form::button('Reset', array('class' => 'btn btn-warning btn-lg mr-2', 'type' => 'reset')); !!}
               </div>
             </div>
