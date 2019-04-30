@@ -27,7 +27,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->float('weight', 8, 2);
             $table->string('size');
-            $table->string('product_status');
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')
