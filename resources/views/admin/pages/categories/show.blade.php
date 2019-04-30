@@ -6,7 +6,7 @@
 </tr>  
 <tr>
     <td>{{ $model->id }}</td>
-    <td>{{ $model->category_name }}</td>
-    <td>{{ $model->category_slug }}</td>
+    <td>{{ $model->name }}</td>
+    <td>{{ $model->slug }}</td>
 </tr>  
 </table>  

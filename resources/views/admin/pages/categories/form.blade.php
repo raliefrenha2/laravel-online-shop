@@ -5,7 +5,7 @@
 
     <div class="form-group">
         <label for="" class="control-label">Nama Kategori</label>
-        {!!Form::text('category_name', null, ['class' => 'form-control', 'id' => 'category_name']) !!}
+        {!!Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) !!}
     </div>
     <div class="form-group">
         <label for="" class="control-label">Urutan</label>

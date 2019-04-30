@@ -15,7 +15,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'category_name', 'category_slug', 'sort',
+        'name', 'slug', 'sort',
     ];
 
     /**
@@ -26,8 +26,8 @@ class Category extends Model
    public function sluggable()
    {
       return [
-            'category_slug' => [
-                'source' => 'category_name'
+            'slug' => [
+                'source' => 'name'
             ]
         ];
    }

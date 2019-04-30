@@ -25,7 +25,7 @@ class CategoryRequest extends FormRequest
     {
 
          $rules = [
-            'category_name' => 'required|min:3|string'
+            'name' => 'required|min:3|string'
         ];
 
         if (request()->isMethod('put')) {

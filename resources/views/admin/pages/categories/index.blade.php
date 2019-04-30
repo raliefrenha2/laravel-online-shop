@@ -96,8 +96,8 @@
             ajax: "{{ route('table.category') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'id'},
-                {data: 'category_name', name: 'category_name'},
-                {data: 'category_slug', name: 'category_slug'},
+                {data: 'name', name: 'name'},
+                {data: 'slug', name: 'slug'},
                 {data: 'sort', name: 'sort'},
                 {data: 'action', name: 'action'}
             ]
