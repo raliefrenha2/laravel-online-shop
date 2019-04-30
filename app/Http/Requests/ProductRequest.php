@@ -26,7 +26,7 @@ class ProductRequest extends FormRequest
     {
          $rules = [
             'category_id' => 'not_in:0',
-            'product_name' => 'required|string|min:3',
+            'name' => 'required|string|min:3',
             'description' => 'required|min:10',
             'keywords' => 'required|string',
             'price' => 'required|numeric',
@@ -34,14 +34,14 @@ class ProductRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpg,png,jpeg',
             'weight' => 'required|numeric',
             'size' => 'required|string',
-            'product_status' => 'not_in:0',
+            'status' => 'not_in:0',
         ];
 
         if (request()->isMethod('put')) {
-            $rules['product_code'] = 'required|numeric|exists:products,product_code';
+            $rules['code'] = 'required|numeric|exists:products,code';
         }
         if (request()->isMethod('post')) {
-            $rules['product_code'] = 'required|numeric|unique:products,product_code';
+            $rules['code'] = 'required|numeric|unique:products,code';
         }
 
         return $rules;
