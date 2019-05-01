@@ -43,6 +43,7 @@
                   <th>Gambar</th>
                   <th>Nama Produk</th>
                   <th>Kategori</th>
+                  <th>Tag</th>
                   <th>Harga</th>
                   <th>Stok</th>
                   <th>Status</th>
@@ -58,6 +59,7 @@
                   <th>Gambar</th>
                   <th>Nama Produk</th>
                   <th>Kategori</th>
+                  <th>Tag</th>
                   <th>Harga</th>
                   <th>Stok</th>
                   <th>Status</th>
@@ -109,13 +111,21 @@
                 render: function(data, type, row, meta){
                   return '<span class="badge badge-primary">'+data+'</span>'
                 }},
+                {data: 'tag', name: 'tag',
+                render: function(data, type, row, meta){
+                 // var data;
+                 //  $.each(data, function(tagItem){
+                 //    return tagItem
+                 //  });
+                 return '<span class="badge badge-primary">'+data+'</span>'
+               
+                }},
                 {data: 'price', name: 'price', render: $.fn.dataTable.render.number( '.', '.', 0, 'Rp ' )},
                 {data: 'stock', name: 'stock', render: $.fn.dataTable.render.number( '.', '.', 0, '' )},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action'}
             ]
         });
-        
     </script>
 @endpush
 

@@ -39,8 +39,14 @@ class Product extends Model
 
   public function tags()
   {
-      return $this->belongsToMany('App\Tag')
+      return $this->belongsToMany('App\Tag', 'product_tag')
         ->withTimestamps();
+
+  }
+
+  public function getTagListAttribute()
+  {
+    return $this->tags->pluck('id');
   }
 
 }

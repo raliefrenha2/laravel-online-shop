@@ -16,6 +16,7 @@ use File;
 
 use App\Product;
 use App\Category;
+use App\Tag;
 
 class ProductController extends Controller
 {
@@ -39,12 +40,9 @@ class ProductController extends Controller
     {
         $model = new Product();
         $categories = Category::pluck('name', 'id')->prepend('Pilih Kategori');
-        $status = collect([
-            ['step' => 'Publish', 'name' => 'Publikasikan'],
-            ['step' => 'Draft', 'name' => 'Simpan sebagai Draft']
-        ])
-            ->pluck('name', 'step')->prepend('Pilih Status');
-        return view('admin.pages.products.form', compact('model','categories', 'status'));
+        $tags = Tag::pluck('name', 'id')->prepend('Pilih Kategori');
+        $status = $this->status();
+        return view('admin.pages.products.form', compact('model','categories', 'tags','status'));
     }
 
     /**
@@ -57,8 +55,9 @@ class ProductController extends Controller
     {    
         $request = $this->saveFiles($request);
         $request['user_id'] = 1;
+        $product = Product::create($request->all());
+        $product->tags()->attach($request->input('tag_list'));
 
-        Product::create($request->all());
         return redirect(route('product.index'));
     }
 
@@ -82,12 +81,9 @@ class ProductController extends Controller
     public function edit(Product $model)
     {
         $categories = Category::pluck('name', 'id');
-        $status = collect([
-            ['step' => 'Publish', 'name' => 'Publikasikan'],
-            ['step' => 'Draft', 'name' => 'Simpan sebagai Draft']
-        ])
-            ->pluck('name', 'step');
-        return view('admin.pages.products.form', compact('model','categories', 'status'));
+        $tags = Tag::pluck('name', 'id')->prepend('Pilih Kategori');
+        $status = $this->status();
+        return view('admin.pages.products.form', compact('model','categories','tags', 'status'));
     }
 
     /**
@@ -106,6 +102,7 @@ class ProductController extends Controller
         }
         
         $model->update($request->all());
+        $model->tags()->sync($request->input('tag_list'));
         return view('admin.pages.products.index')->with(['success' => '<strong>' . $model->name . '</strong> Diperbaharui']);
     }
 
@@ -128,9 +125,19 @@ class ProductController extends Controller
 
     public function dataTable()
     {
-        $model = Product::with('category');
+        $model = Product::with('category', 'tags');
 
         return DataTables::of($model)
+        ->addColumn('tag', function (Product $product) {
+            return $product->tags->pluck('name');
+
+            // $tagItem = '';
+            // foreach ($product->tags as $tag) {
+            //       $tagItem .= $tag->name;
+            //       $tagItem .= ' | ' ;
+            // }    
+            // return $tagItem;
+        })
         ->addColumn('category', function (Product $product) {
             return $product->category->name; 
         })
@@ -150,6 +157,15 @@ class ProductController extends Controller
     public function export() 
     {
         return Excel::download(new ProductsExport, 'products.xlsx');
+    }
+
+    private function status()
+    {
+        return collect([
+            ['step' => 'Publish', 'name' => 'Publikasikan'],
+            ['step' => 'Draft', 'name' => 'Simpan sebagai Draft']
+        ])
+            ->pluck('name', 'step')->prepend('Pilih Status');
     }
 
 }

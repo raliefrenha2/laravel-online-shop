@@ -116,6 +116,14 @@
             </div>
 
             <div class="form-group row">
+              {!! Form::label('tags', 'Tag : ', array('class' => 'col-md-3 col-form-label')) !!}
+              <div class="col-md-8">
+                {!! Form::select('tag_list[]', $tags, NULL, array('class' => 'form-control select2'. ( $errors->has('tags') ? ' is-invalid' : '' ),'multiple'))!!}
+                {!! $errors->has('tags') ? '<div class="invalid-feedback">'.$errors->first('tags').'</div>':'' !!}
+              </div>
+            </div>
+
+            <div class="form-group row">
               {!! Form::label('image', 'Gambar : ', array('class' => 'col-md-3 col-form-label')) !!}
               <div class="col-md-8">
                 {!!Form::file('image', null, ['class' => 'form-control', 'id' => 'image']) !!}
@@ -133,6 +141,7 @@
                 {!! $errors->has('status') ? '<div class="invalid-feedback">'.$errors->first('status').'</div>':'' !!}
               </div>
             </div>
+
 
             <div class="form-group row">
               {!! Form::label('button', '', array('class' => 'col-md-3 col-form-label')) !!}
@@ -167,7 +176,7 @@
   <!-- Sweet Alert -->
   <link rel="stylesheet" href=" {{ asset('vendor/sweetalert2') }}/sweetalert2.min.css">
   <!-- Select2 -->
-  <link rel="stylesheet" href=" {{ asset('vendor/adminlte') }}/plugins/select2/select2.min.js">
+  <link rel="stylesheet" href=" {{ asset('vendor/adminlte') }}/plugins/select2/select2.min.css">
 
 @endpush
 
@@ -178,5 +187,7 @@
     <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
     <script>
       CKEDITOR.replace( 'description' );
+
+      $('.select2').select2();
     </script>
 @endpush
