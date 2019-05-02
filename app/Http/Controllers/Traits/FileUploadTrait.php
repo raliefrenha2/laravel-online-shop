@@ -28,7 +28,7 @@ trait FileUploadTrait
             if ($request->hasFile($key)) {
                 if ($request->has($key . '_max_width') && $request->has($key . '_max_height')) {
                     // Check file width
-                    $filename = str_slug($request->name) . '-' . time() .'.jpg';
+                    $filename = str_slug($request->name) . '-' . date("YmdHi") .'.jpg';
                     $file     = $request->file($key);
                     $image    = Image::make($file);
                     if (! file_exists($thumbPath)) {
@@ -63,7 +63,7 @@ trait FileUploadTrait
                     $image->save($uploadPath . '/' . $filename);
                     $finalRequest = new Request(array_merge($finalRequest->all(), [$key => $filename]));
                 } else {
-                    $filename = str_slug($request->name) . '-' . time() .'.jpg';
+                    $filename = str_slug($request->name) . '-' . date("YmdHi") .'.jpg';
                     $request->file($key)->move($uploadPath, $filename);
                     $finalRequest = new Request(array_merge($finalRequest->all(), [$key => $filename]));
                 }
