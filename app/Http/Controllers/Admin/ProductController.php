@@ -13,7 +13,6 @@ use Yajra\DataTables\DataTables;
 use File;
 
 
-
 use App\Product;
 use App\Category;
 use App\Tag;
@@ -149,7 +148,7 @@ class ProductController extends Controller
 
     public function dataTable()
     {
-        $model = Product::with('category', 'tags');
+        $model = Product::with('category', 'tags')->withCount('images');
 
         return DataTables::of($model)
         ->addColumn('tag', function (Product $product) {
@@ -168,6 +167,7 @@ class ProductController extends Controller
         ->addColumn('action', function ($model) {
             return view('admin.layouts._action_nm', [
                 'model' => $model,
+                'image_count' => $model->images_count,
                 'url_images' => route('product.images', $model->id),
                 'url_show' => route('product.show', $model->id),
                 'url_edit' => route('product.edit', $model->id),
