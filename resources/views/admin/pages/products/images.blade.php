@@ -69,7 +69,7 @@
             </div>
 
           {!! Form::close() !!}
-          
+
           <table id="datatable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -94,7 +94,7 @@
                       <td>{!! $no !!}</td>
                       <td> <img src="{!! asset('uploads/product/'.$image->image)  !!}" class="img img-responsive img-thumbnail" width = "60" alt=""> </td>
                       <td>{!! $image->name !!}</td>
-                      <td><a href="{{ route('image.destroy', $image->id) }}" class="btn-delete" title="Hapus > {{ $image->name }}"><i class="fa fa-trash-o text-danger" aria-hidden="true"></i></i></a></td>
+                      <td><a href="{{ route('product.image.destroy', $image->id) }}" class="btn-delete" title="Hapus > {{ $image->name }}"><i class="fa fa-trash-o text-danger" aria-hidden="true"></i></i></a></td>
                     </tr>
                   @php
                     {{$no++; }}

@@ -60,7 +60,7 @@ Route::get('/admin/product/{model}', 'Admin\ProductController@show')->name('prod
 Route::get('/admin/product/{model}/edit', 'Admin\ProductController@edit')->name('product.edit');
 Route::post('/admin/product/images', 'Admin\ProductController@imageStore')->name('product.image.store');
 Route::get('/admin/product/{model}/images', 'Admin\ProductController@images')->name('product.images');
-Route::delete('/admin/product/images/{image}', 'Admin\ProductController@imageDestroy')->name('image.destroy');
+Route::delete('/admin/product/images/{image}', 'Admin\ProductController@imageDestroy')->name('product.image.destroy');
 
 Route::get('table/category', 'Admin\CategoryController@dataTable')->name('table.category');
 Route::get('table/tag', 'Admin\TagController@dataTable')->name('table.tag');

@@ -126,7 +126,6 @@ class ProductController extends Controller
     public function images (Product $model)
     {
         $images = Image::where('product_id', $model->id)->get();
-        // dd($images);
         return view('admin.pages.products.images', compact('model', 'images'));
     }
 
@@ -139,7 +138,6 @@ class ProductController extends Controller
 
     public function imageDestroy(Image $image)
     {
-        // dd($image);
         if(!empty($image->image)) {
             File::delete(public_path('uploads/product/' . $image->image));
             File::delete(public_path('uploads/thumb/' . $image->image));
