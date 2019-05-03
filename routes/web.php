@@ -58,6 +58,9 @@ Route::delete('/admin/product/{model}', 'Admin\ProductController@destroy')->name
 Route::put('/admin/product/{model}', 'Admin\ProductController@update')->name('product.update');
 Route::get('/admin/product/{model}', 'Admin\ProductController@show')->name('product.show');
 Route::get('/admin/product/{model}/edit', 'Admin\ProductController@edit')->name('product.edit');
+Route::post('/admin/product/images', 'Admin\ProductController@imageStore')->name('product.image.store');
+Route::get('/admin/product/{model}/images', 'Admin\ProductController@images')->name('product.images');
+Route::delete('/admin/product/images/{image}', 'Admin\ProductController@imageDestroy')->name('image.destroy');
 
 Route::get('table/category', 'Admin\CategoryController@dataTable')->name('table.category');
 Route::get('table/tag', 'Admin\TagController@dataTable')->name('table.tag');

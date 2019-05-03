@@ -44,6 +44,11 @@ class Product extends Model
 
   }
 
+  public function images()
+  {
+    return $this->hasMany('App\Image');
+  }
+
   public function getTagListAttribute()
   {
     return $this->tags->pluck('id');

@@ -81,6 +81,8 @@
   </div>
 @endsection
 
+@include('admin.layouts._modal')
+
 @push('styles')
   <!-- DataTables -->
   <link rel="stylesheet" href=" {{ asset('vendor/adminlte') }}/plugins/datatables/dataTables.bootstrap4.min.css">
@@ -104,7 +106,7 @@
                 {data: 'DT_RowIndex', name: 'id'},
                 {data: 'image', name: 'image', 
                 render: function( data, type, row, meta){
-                  return '<img src="{{asset('uploads/product/')}}/'+data+'" alt="'+data+'" width="60">'
+                  return '<img src="{{asset('uploads/product/')}}/'+data+'" class ="img img-responsive img-thumbnail" alt="'+data+'" width="60">'
                 }},
                 {data: 'name', name: 'name'},
                 {data: 'category', name: 'category',

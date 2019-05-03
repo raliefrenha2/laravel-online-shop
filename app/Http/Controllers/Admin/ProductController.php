@@ -17,6 +17,7 @@ use File;
 use App\Product;
 use App\Category;
 use App\Tag;
+use App\Image;
 
 class ProductController extends Controller
 {
@@ -122,6 +123,31 @@ class ProductController extends Controller
         $model->delete();
     }
 
+    public function images (Product $model)
+    {
+        $images = Image::where('product_id', $model->id)->get();
+        // dd($images);
+        return view('admin.pages.products.images', compact('model', 'images'));
+    }
+
+    public function imageStore(Request $request)
+    {
+        $request = $this->saveFiles($request);
+        Image::create($request->all());
+        return back();
+    }
+
+    public function imageDestroy(Image $image)
+    {
+        // dd($image);
+        if(!empty($image->image)) {
+            File::delete(public_path('uploads/product/' . $image->image));
+            File::delete(public_path('uploads/thumb/' . $image->image));
+        }
+        $image->delete();
+        // return back();
+    }
+
 
     public function dataTable()
     {
@@ -144,6 +170,7 @@ class ProductController extends Controller
         ->addColumn('action', function ($model) {
             return view('admin.layouts._action_nm', [
                 'model' => $model,
+                'url_images' => route('product.images', $model->id),
                 'url_show' => route('product.show', $model->id),
                 'url_edit' => route('product.edit', $model->id),
                 'url_destroy' => route('product.destroy', $model->id),
