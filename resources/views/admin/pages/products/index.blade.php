@@ -1,84 +1,46 @@
 @extends('admin.layouts.app')
 
+@section('title', 'Produk')
+
+@section('card-title', 'Daftar Produk')
+
 @section('content')
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Produk</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Produk</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Daftar Produk</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-          </div>
-        </div>
-        <div class="card-body">
-          <a href="{{ route('product.create') }}" class="btn btn-primary ml-2" title="Tambah Produk Baru"><i class="fa fa-plus"></i> Tambah</a>
-          <a href="{{ route('product.export') }}" class="btn btn-success ml-2" title="Export to Excel File"><i class="fa fa-file-excel-o"></i> Export</a>
-          
-          <table id="datatable" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Gambar</th>
-                  <th>Nama Produk</th>
-                  <th>Kategori</th>
-                  <th>Tag</th>
-                  <th>Harga</th>
-                  <th>Stok</th>
-                  <th>Status</th>
-                  <th>Aksi</th>
-                </tr>
-                </thead>
-                <tbody>
-                
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>No</th>
-                  <th>Gambar</th>
-                  <th>Nama Produk</th>
-                  <th>Kategori</th>
-                  <th>Tag</th>
-                  <th>Harga</th>
-                  <th>Stok</th>
-                  <th>Status</th>
-                  <th>Aksi</th>
-                </tr>
-                </tfoot>
-              </table>
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
-
-    </section>
-    <!-- /.content -->
-  </div>
+  
+  <a href="{{ route('product.create') }}" class="btn btn-primary ml-2" title="Tambah Produk Baru"><i class="fa fa-plus"></i> Tambah</a>
+  <a href="{{ route('product.export') }}" class="btn btn-success ml-2" title="Export to Excel File"><i class="fa fa-file-excel-o"></i> Export</a>
+  
+  <table id="datatable" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Gambar</th>
+        <th>Nama Produk</th>
+        <th>Kategori</th>
+        <th>Tag</th>
+        <th>Harga</th>
+        <th>Stok</th>
+        <th>Status</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>No</th>
+        <th>Gambar</th>
+        <th>Nama Produk</th>
+        <th>Kategori</th>
+        <th>Tag</th>
+        <th>Harga</th>
+        <th>Stok</th>
+        <th>Status</th>
+        <th>Aksi</th>
+      </tr>
+    </tfoot>
+  </table>
+       
 @endsection
 
 @include('admin.layouts._modal')

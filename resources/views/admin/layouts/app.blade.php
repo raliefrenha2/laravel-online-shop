@@ -12,8 +12,8 @@
   <!-- Main Sidebar Container -->   
 	@include('admin/parts/sidebar')
   <!-- Content Wrapper. Contains page content -->
-  {{-- 	@include('admin.parts.content') --}}
-  @yield('content')
+  	@include('admin.parts.content')
+  {{-- @yield('content') --}}
   <!-- /.content-wrapper -->
   
 
