@@ -32,6 +32,11 @@ class Product extends Model
         ];
    }
 
+  // public function getRouteKeyName()
+  // {
+  //     return 'slug';
+  // }
+
   public function category()
   {
     return $this->hasOne('App\Category' , 'id', 'category_id');

@@ -42,8 +42,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview {{ request()->routeIs(['product.*', 'category.*', 'tag.*']) ? 'menu-open':'' }}">
+            <a href="#" class="nav-link {{ request()->routeIs(['product.*', 'category.*', 'tag.*']) ? 'active':'' }}">
               <i class="fa fa-cubes nav-icon"></i>
               <p>
                 Produk
@@ -52,19 +52,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('product.index')}}" class="nav-link">
+                <a href="{{ route('product.index')}}" class="nav-link {{ request()->routeIs('product.*') ? 'active':'' }}">
                   <i class="fa fa-dropbox nav-icon"></i>
                   <p>Produk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('category.index')}}" class="nav-link">
+                <a href="{{ route('category.index')}}" class="nav-link {{ request()->routeIs('category.index') ? 'active':'' }}">
                   <i class="fa fa-th-list nav-icon"></i>
                   <p>Kategori</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('tag.index')}}" class="nav-link">
+                <a href="{{ route('tag.index')}}" class="nav-link {{ request()->routeIs('tag.index') ? 'active':'' }}">
                   <i class="fa fa-tags nav-icon"></i>
                   <p>Tag</p>
                 </a>

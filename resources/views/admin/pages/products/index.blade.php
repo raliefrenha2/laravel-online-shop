@@ -77,10 +77,10 @@
                 }},
                 {data: 'tag', name: 'tag',
                 render: function(data, type, row, meta){
-                 // var data;
-                 //  $.each(data, function(tagItem){
-                 //    return tagItem
-                 //  });
+                  // $.each(data, function(index, element){
+                  //  return '<span class="badge badge-primary">'+element+'</span>'
+                  // })
+
                  return '<span class="badge badge-primary">'+data+'</span>'
                
                 }},

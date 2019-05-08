@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/admin', function () {
     return view('admin.dashboard');
-});
+})->name('admin.dashboard');
 
 
 
@@ -35,32 +35,47 @@ Route::prefix('customer')->group(function() {
 
 // Route::resource('admin/category', 'Admin\CategoryController');
 
-Route::post('/admin/category/', 'Admin\CategoryController@store')->name('category.store');
-Route::get('/admin/category/', 'Admin\CategoryController@index')->name('category.index');
-Route::get('/admin/category/create', 'Admin\CategoryController@create')->name('category.create');
-Route::delete('/admin/category/{model}', 'Admin\CategoryController@destroy')->name('category.destroy');
-Route::put('/admin/category/{model}', 'Admin\CategoryController@update')->name('category.update');
-Route::get('/admin/category/{model}', 'Admin\CategoryController@show')->name('category.show');
-Route::get('/admin/category/{model}/edit', 'Admin\CategoryController@edit')->name('category.edit');
+Route::prefix('admin')->group(function() {
 
-Route::post('/admin/tag/', 'Admin\TagController@store')->name('tag.store');
-Route::get('/admin/tag/', 'Admin\TagController@index')->name('tag.index');
-Route::get('/admin/tag/create', 'Admin\TagController@create')->name('tag.create');
-Route::delete('/admin/tag/{model}', 'Admin\TagController@destroy')->name('tag.destroy');
-Route::put('/admin/tag/{model}', 'Admin\TagController@update')->name('tag.update');
-Route::get('/admin/tag/{model}', 'Admin\TagController@show')->name('tag.show');
-Route::get('/admin/tag/{model}/edit', 'Admin\TagController@edit')->name('tag.edit');
+	Route::prefix('category')->group(function(){
+		Route::name('category.')->group(function(){
+			Route::post('/', 'Admin\CategoryController@store')->name('store');
+			Route::get('/', 'Admin\CategoryController@index')->name('index');
+			Route::get('/create', 'Admin\CategoryController@create')->name('create');
+			Route::delete('/{model}', 'Admin\CategoryController@destroy')->name('destroy');
+			Route::put('/{model}', 'Admin\CategoryController@update')->name('update');
+			Route::get('/{model}', 'Admin\CategoryController@show')->name('show');
+			Route::get('/{model}/edit', 'Admin\CategoryController@edit')->name('edit');
+		});
+	});
+	
 
-Route::post('/admin/product/', 'Admin\ProductController@store')->name('product.store');
-Route::get('/admin/product/', 'Admin\ProductController@index')->name('product.index');
-Route::get('/admin/product/create', 'Admin\ProductController@create')->name('product.create');
-Route::delete('/admin/product/{model}', 'Admin\ProductController@destroy')->name('product.destroy');
-Route::put('/admin/product/{model}', 'Admin\ProductController@update')->name('product.update');
-Route::get('/admin/product/{model}', 'Admin\ProductController@show')->name('product.show');
-Route::get('/admin/product/{model}/edit', 'Admin\ProductController@edit')->name('product.edit');
-Route::post('/admin/product/images', 'Admin\ProductController@imageStore')->name('product.image.store');
-Route::get('/admin/product/{model}/images', 'Admin\ProductController@images')->name('product.images');
-Route::delete('/admin/product/images/{image}', 'Admin\ProductController@imageDestroy')->name('product.image.destroy');
+	Route::name('tag.')->group(function(){
+		Route::post('tag', 'Admin\TagController@store')->name('store');
+		Route::get('tag', 'Admin\TagController@index')->name('index');
+		Route::get('tag/create', 'Admin\TagController@create')->name('create');
+		Route::delete('tag/{model}', 'Admin\TagController@destroy')->name('destroy');
+		Route::put('tag/{model}', 'Admin\TagController@update')->name('update');
+		Route::get('tag/{model}', 'Admin\TagController@show')->name('show');
+		Route::get('tag/{model}/edit', 'Admin\TagController@edit')->name('edit');
+	});
+
+	Route::name('product.')->group(function(){
+		Route::post('product', 'Admin\ProductController@store')->name('store');
+		Route::get('product', 'Admin\ProductController@index')->name('index');
+		Route::get('product/create', 'Admin\ProductController@create')->name('create');
+		Route::delete('product/{model}', 'Admin\ProductController@destroy')->name('destroy');
+		Route::put('product/{model}', 'Admin\ProductController@update')->name('update');
+		Route::get('product/{model}', 'Admin\ProductController@show')->name('show');
+		Route::get('product/{model}/edit', 'Admin\ProductController@edit')->name('edit');
+		
+		Route::post('product/images', 'Admin\ProductController@imageStore')->name('image.store');
+		Route::get('product/{model}/images', 'Admin\ProductController@images')->name('images');
+		Route::delete('product/images/{image}', 'Admin\ProductController@imageDestroy')->name('image.destroy');
+	});
+
+});
+
 
 Route::get('table/category', 'Admin\CategoryController@dataTable')->name('table.category');
 Route::get('table/tag', 'Admin\TagController@dataTable')->name('table.tag');
