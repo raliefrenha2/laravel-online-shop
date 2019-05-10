@@ -26,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('dashboard.index')}}" class="nav-link">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
                 Dashboard
@@ -70,6 +70,21 @@
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('logout') }}" class="nav-link" 
+            onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+              
+              <i class="nav-icon fa fa-calendar"></i>
+              <p>
+                {{ __('Logout') }}
+              </p>
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
           </li>
         </ul>
       </nav>

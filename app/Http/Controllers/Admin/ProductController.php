@@ -152,14 +152,12 @@ class ProductController extends Controller
 
         return DataTables::of($model)
         ->addColumn('tag', function (Product $product) {
-            return $product->tags->pluck('name');
-
-            // $tagItem = '';
-            // foreach ($product->tags as $tag) {
-            //       $tagItem .= $tag->name;
-            //       $tagItem .= ' | ' ;
-            // }    
-            // return $tagItem;
+           
+            $tagItem = '';
+            foreach ($product->tags as $tag) {
+                $tagItem .= '<span class="badge badge-warning">'.$tag->name.'</span> </br>';
+            }
+            return $tagItem;
         })
         ->addColumn('category', function (Product $product) {
             return $product->category->name; 
@@ -175,7 +173,7 @@ class ProductController extends Controller
             ]);
         })
          ->addIndexColumn()
-        ->rawColumns(['action'])
+        ->rawColumns(['tag','action'])
         ->make('true');
     }
 
