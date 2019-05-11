@@ -76,15 +76,6 @@
                   return '<span class="badge badge-primary">'+data+'</span>'
                 }},
                 {data: 'tag', name: 'tag'},
-                // {data: 'tag', name: 'tag',
-                // render: function(data, type, row, meta){
-                //   // $.each(data, function(index, element){
-                //   //  return '<span class="badge badge-primary">'+element+'</span>'
-                //   // })
-
-                //  return '<span class="badge badge-primary">'+data+'</span>'
-               
-                // }},
                 {data: 'price', name: 'price', render: $.fn.dataTable.render.number( '.', '.', 0, 'Rp ' )},
                 {data: 'stock', name: 'stock', render: $.fn.dataTable.render.number( '.', '.', 0, '' )},
                 {data: 'status', name: 'status'},

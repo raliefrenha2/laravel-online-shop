@@ -57,7 +57,12 @@ Route::group(['middleware' => 'auth'], function(){
 			Route::get('product/{model}/images', 'Admin\ProductController@images')->name('images');
 			Route::delete('product/images/{image}', 'Admin\ProductController@imageDestroy')->name('image.destroy');
 		});
+
+		Route::get('configuration', 'Admin\ConfigurationController@edit')->name('configuration.edit');
+		Route::put('configuration', 'Admin\ConfigurationController@update')->name('configuration.update');
 	});
+
+	
 
 	Route::get('table/category', 'Admin\CategoryController@dataTable')->name('table.category');
 	Route::get('table/tag', 'Admin\TagController@dataTable')->name('table.tag');

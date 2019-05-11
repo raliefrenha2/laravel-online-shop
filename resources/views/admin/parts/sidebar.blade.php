@@ -26,22 +26,14 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('dashboard.index')}}" class="nav-link">
+            <a href="{{ route('dashboard.index')}}" class="nav-link  {{ request()->routeIs('dashboard.index') ? 'active':'' }}">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>   
-          <li class="nav-header">EXAMPLES</li>
-          <li class="nav-item">
-            <a href="../calendar.html" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                Calendar
-              </p>
-            </a>
-          </li>
+          <li class="nav-header">MENU</li>
           <li class="nav-item has-treeview {{ request()->routeIs(['product.*', 'category.*', 'tag.*']) ? 'menu-open':'' }}">
             <a href="#" class="nav-link {{ request()->routeIs(['product.*', 'category.*', 'tag.*']) ? 'active':'' }}">
               <i class="fa fa-cubes nav-icon"></i>
@@ -71,6 +63,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('configuration.edit')}}" class="nav-link {{ request()->routeIs('configuration.edit') ? 'active':'' }}">
+              <i class="nav-icon fa fa-cogs"></i>
+              <p>
+                Konfigurasi
+              </p>
+            </a>
+          </li> 
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link" 
             onclick="event.preventDefault();
