@@ -87,6 +87,17 @@
           </div>
         </div>
 
+        <div class="form-group row mt-3">
+          {!! Form::label('', '', array('class' => 'col-md-3 col-form-label')) !!}
+          <div class="col-md-8">
+            @if (!empty($model->logo))
+              <img src="{{ asset('uploads/product/' .$model->logo)}}" alt="" width="150">
+            @else
+              <h3 class="p-2"> Belum Ada Logo</h3>
+            @endif
+          </div>
+        </div>
+
         <div class="form-group row">
           {!! Form::label('icon', 'Icon Web : ', array('class' => 'col-md-3 col-form-label')) !!}
           <div class="col-md-8">
@@ -95,6 +106,17 @@
             {!! Form::hidden('icon_max_width', 2048) !!}
             {!! Form::hidden('icon_max_height', 2048) !!}
             {!! $errors->has('icon') ? '<div class="invalid-feedback">'.$errors->first('icon').'</div>':'' !!}
+          </div>
+        </div>
+
+        <div class="form-group row mt-3">
+          {!! Form::label('', '', array('class' => 'col-md-3 col-form-label')) !!}
+          <div class="col-md-8">
+            @if (!empty($model->icon))
+              <img src="{{ asset('uploads/product/' .$model->icon)}}" alt="" width="150">
+            @else
+              <h3 class="p-2"> Belum Ada Icon</h3>
+            @endif
           </div>
         </div>
 
