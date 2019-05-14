@@ -23,9 +23,9 @@
             <h4 class="mb-3">Top categories</h4>
             <h5>Men</h5>
             <ul class="list-unstyled">
-              <li><a href="category.html">T-shirts</a></li>
-              <li><a href="category.html">Shirts</a></li>
-              <li><a href="category.html">Accessories</a></li>
+              @foreach ($categories as $category)
+                <li><a href="{{ $category->category_id }}">{{ $category->category->name }}</a></li> 
+              @endforeach
             </ul>
             <h5>Ladies</h5>
             <ul class="list-unstyled">
@@ -35,6 +35,8 @@
               <li><a href="category.html">Accessories</a></li>
             </ul>
           </div>
+
+          
           <!-- /.col-lg-3-->
           <div class="col-lg-3 col-md-6">
             <h4 class="mb-3">Where to find us</h4>

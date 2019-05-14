@@ -62,10 +62,9 @@
                       <div class="col-md-6 col-lg-3">
                         <h5>Clothing</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="category.html" class="nav-link">T-shirts</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Shirts</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Pants</a></li>
-                          <li class="nav-item"><a href="category.html" class="nav-link">Accessories</a></li>
+                          @foreach ($categories as $category)
+                            <li class="nav-item"><a href="{{$category->category_id}}" class="nav-link">{{$category->category->name}}</a></li>
+                          @endforeach
                         </ul>
                       </div>
                       <div class="col-md-6 col-lg-3">

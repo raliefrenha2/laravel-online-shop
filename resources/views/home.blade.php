@@ -100,9 +100,6 @@
                 <!-- /.product-->
               </div>
             @endforeach
-              @foreach ($categories as $category)
-               {{ $category->category->name }}
-              @endforeach
             
               <!-- /.product-slider-->
             </div>
